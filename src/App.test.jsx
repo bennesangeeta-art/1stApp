@@ -9,6 +9,11 @@ const animationTestIds = [
   'glowing-burst-animation',
   'fireworks-animation',
   'ripple-wave-animation',
+  'neon-orbit-animation',
+  'star-shower-animation',
+  'aurora-sweep-animation',
+  'prism-rain-animation',
+  'pixel-burst-animation',
 ]
 
 describe('Greeting App', () => {

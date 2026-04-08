@@ -5,6 +5,11 @@ import PartyPopperAnimation from './animations/PartyPopperAnimation'
 import GlowingBurstAnimation from './animations/GlowingBurstAnimation'
 import FireworksAnimation from './animations/FireworksAnimation'
 import RippleWaveAnimation from './animations/RippleWaveAnimation'
+import NeonOrbitAnimation from './animations/NeonOrbitAnimation'
+import StarShowerAnimation from './animations/StarShowerAnimation'
+import AuroraSweepAnimation from './animations/AuroraSweepAnimation'
+import PrismRainAnimation from './animations/PrismRainAnimation'
+import PixelBurstAnimation from './animations/PixelBurstAnimation'
 import './App.css'
 
 const ANIMATIONS = [
@@ -13,6 +18,11 @@ const ANIMATIONS = [
   'glowingBurst',
   'fireworks',
   'rippleWave',
+  'neonOrbit',
+  'starShower',
+  'auroraSweep',
+  'prismRain',
+  'pixelBurst',
 ]
 
 function App() {
@@ -105,6 +115,21 @@ function App() {
         )}
         {activeAnimation === 'rippleWave' && (
           <RippleWaveAnimation key="rippleWave" onComplete={clearAnimation} />
+        )}
+        {activeAnimation === 'neonOrbit' && (
+          <NeonOrbitAnimation key="neonOrbit" onComplete={clearAnimation} />
+        )}
+        {activeAnimation === 'starShower' && (
+          <StarShowerAnimation key="starShower" onComplete={clearAnimation} />
+        )}
+        {activeAnimation === 'auroraSweep' && (
+          <AuroraSweepAnimation key="auroraSweep" onComplete={clearAnimation} />
+        )}
+        {activeAnimation === 'prismRain' && (
+          <PrismRainAnimation key="prismRain" onComplete={clearAnimation} />
+        )}
+        {activeAnimation === 'pixelBurst' && (
+          <PixelBurstAnimation key="pixelBurst" onComplete={clearAnimation} />
         )}
       </div>
     </div>
