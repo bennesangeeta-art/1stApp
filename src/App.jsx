@@ -3,9 +3,17 @@ import './animations/animations.css'
 import ConfettiAnimation from './animations/ConfettiAnimation'
 import PartyPopperAnimation from './animations/PartyPopperAnimation'
 import GlowingBurstAnimation from './animations/GlowingBurstAnimation'
+import FireworksAnimation from './animations/FireworksAnimation'
+import RippleWaveAnimation from './animations/RippleWaveAnimation'
 import './App.css'
 
-const ANIMATIONS = ['confetti', 'partyPopper', 'glowingBurst']
+const ANIMATIONS = [
+  'confetti',
+  'partyPopper',
+  'glowingBurst',
+  'fireworks',
+  'rippleWave',
+]
 
 function App() {
   const [name, setName] = useState('')
@@ -91,6 +99,12 @@ function App() {
         )}
         {activeAnimation === 'glowingBurst' && (
           <GlowingBurstAnimation key="glowingBurst" onComplete={clearAnimation} />
+        )}
+        {activeAnimation === 'fireworks' && (
+          <FireworksAnimation key="fireworks" onComplete={clearAnimation} />
+        )}
+        {activeAnimation === 'rippleWave' && (
+          <RippleWaveAnimation key="rippleWave" onComplete={clearAnimation} />
         )}
       </div>
     </div>

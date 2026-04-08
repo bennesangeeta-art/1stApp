@@ -3,6 +3,14 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import App from './App'
 
+const animationTestIds = [
+  'confetti-animation',
+  'party-popper-animation',
+  'glowing-burst-animation',
+  'fireworks-animation',
+  'ripple-wave-animation',
+]
+
 describe('Greeting App', () => {
   beforeEach(() => {
     vi.useFakeTimers()
@@ -104,12 +112,9 @@ describe('Greeting App', () => {
       const button = screen.getByRole('button', { name: /greet/i })
       await user.click(button)
 
-      const hasConfetti = screen.queryByTestId('confetti-animation')
-      const hasPartyPopper = screen.queryByTestId('party-popper-animation')
-      const hasGlowingBurst = screen.queryByTestId('glowing-burst-animation')
-
-      const hasAnyAnimation =
-        hasConfetti !== null || hasPartyPopper !== null || hasGlowingBurst !== null
+      const hasAnyAnimation = animationTestIds.some(
+        (testId) => screen.queryByTestId(testId) !== null
+      )
       expect(hasAnyAnimation).toBe(true)
     })
 
@@ -120,12 +125,9 @@ describe('Greeting App', () => {
       const button = screen.getByRole('button', { name: /greet/i })
       await user.click(button)
 
-      const confettiCount = screen.queryAllByTestId('confetti-animation').length
-      const partyPopperCount = screen.queryAllByTestId('party-popper-animation').length
-      const glowingBurstCount = screen.queryAllByTestId('glowing-burst-animation').length
-
-      const totalAnimations =
-        (confettiCount ? 1 : 0) + (partyPopperCount ? 1 : 0) + (glowingBurstCount ? 1 : 0)
+      const totalAnimations = animationTestIds.reduce((count, testId) => {
+        return count + (screen.queryByTestId(testId) ? 1 : 0)
+      }, 0)
       expect(totalAnimations).toBe(1)
     })
 
@@ -139,12 +141,9 @@ describe('Greeting App', () => {
       await user.click(button)
       await user.click(button)
 
-      const confettiCount = screen.queryAllByTestId('confetti-animation').length
-      const partyPopperCount = screen.queryAllByTestId('party-popper-animation').length
-      const glowingBurstCount = screen.queryAllByTestId('glowing-burst-animation').length
-
-      const totalAnimations =
-        (confettiCount ? 1 : 0) + (partyPopperCount ? 1 : 0) + (glowingBurstCount ? 1 : 0)
+      const totalAnimations = animationTestIds.reduce((count, testId) => {
+        return count + (screen.queryByTestId(testId) ? 1 : 0)
+      }, 0)
       expect(totalAnimations).toBe(1)
     })
   })
